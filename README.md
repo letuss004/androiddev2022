@@ -10,6 +10,7 @@ Students are expected to:
 Student Info
 =======================
 
-* Name: *Le Anh Tu*
-* ID: *BA9-067*
-* Group ID: *12*
+* Name: Le Anh Tu
+* ID: BA9-067
+* Group ID: 12
+
