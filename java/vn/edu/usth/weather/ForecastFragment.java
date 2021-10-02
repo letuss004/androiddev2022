@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 
@@ -99,7 +100,8 @@ public class ForecastFragment extends Fragment {
         return linearV;
     }
 
-    private LinearLayout setUpLinearH(FrameLayout view) {
+    @NonNull
+    private LinearLayout setUpLinearH(@NonNull FrameLayout view) {
         LinearLayout linearH = new LinearLayout(view.getContext());
         linearH.setOrientation(LinearLayout.HORIZONTAL);
         linearH.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
