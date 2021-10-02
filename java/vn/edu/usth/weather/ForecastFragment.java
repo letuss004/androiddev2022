@@ -77,18 +77,6 @@ public class ForecastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FrameLayout view = (FrameLayout) inflater.inflate(R.layout.fragment_forecast, container, false);
-        view.setBackgroundColor(Color.BLUE);
-        view.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
-        LinearLayout linearV = setUpLinearV(view);
-        LinearLayout linearH = setUpLinearH(view);
-        TextView tvThursday = setUpTvThursday(view);
-        ImageView ivWeatherIcon = setUpIvWeather(view);
-
-        linearH.addView(tvThursday);
-        linearH.addView(ivWeatherIcon);
-        linearV.addView(linearH);
-        view.addView(linearV);
 
         return view;
     }
