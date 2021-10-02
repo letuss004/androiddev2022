@@ -11,6 +11,8 @@ import android.os.Bundle;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,29 +71,62 @@ public class ForecastFragment extends Fragment {
 
     }
 
-    @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
+    @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n", "RtlHardcoded"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FrameLayout view = (FrameLayout) inflater.inflate(R.layout.fragment_forecast, container, false);
         view.setBackgroundColor(Color.BLUE);
+        view.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-        LinearLayout linearV = new LinearLayout(view.getContext());
-        LinearLayout linearH = new LinearLayout(view.getContext());
-        TextView tvThursday = new TextView(view.getContext());
-        ImageView ivWeatherIcon = new ImageView(view.getContext());
-
-        linearV.setOrientation(LinearLayout.VERTICAL);
-        linearH.setOrientation(LinearLayout.HORIZONTAL);
-        tvThursday.setText("Thursday");
-        tvThursday.setTextSize(30);
-        tvThursday.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        ivWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable.weather_icon_43));
+        LinearLayout linearV = setUpLinearV(view);
+        LinearLayout linearH = setUpLinearH(view);
+        TextView tvThursday = setUpTvThursday(view);
+        ImageView ivWeatherIcon = setUpIvWeather(view);
 
         linearH.addView(tvThursday);
         linearH.addView(ivWeatherIcon);
         linearV.addView(linearH);
         view.addView(linearV);
+
         return view;
     }
+
+    private LinearLayout setUpLinearV(FrameLayout view) {
+        LinearLayout linearV = new LinearLayout(view.getContext());
+        linearV.setOrientation(LinearLayout.VERTICAL);
+        linearV.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        return linearV;
+    }
+
+    private LinearLayout setUpLinearH(FrameLayout view) {
+        LinearLayout linearH = new LinearLayout(view.getContext());
+        linearH.setOrientation(LinearLayout.HORIZONTAL);
+        linearH.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        return linearH;
+    }
+
+    private TextView setUpTvThursday(FrameLayout view) {
+        TextView tvThursday = new TextView(view.getContext());
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 200);
+        layoutParams.gravity = Gravity.TOP;
+        layoutParams.setMargins(20, 0, 0, 0);
+        tvThursday.setText("Thursday");
+        tvThursday.setTextSize(30);
+        tvThursday.setLayoutParams(layoutParams);
+        return tvThursday;
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private ImageView setUpIvWeather(FrameLayout view) {
+        ImageView ivWeatherIcon = new ImageView(view.getContext());
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 120);
+        layoutParams.gravity = Gravity.TOP;
+        layoutParams.setMargins(0, 0, 0, 0);
+        ivWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable.weather_icon_21));
+        ivWeatherIcon.setLayoutParams(layoutParams);
+        return ivWeatherIcon;
+    }
+
+
 }

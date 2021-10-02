@@ -5,34 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".ForecastFragment">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-<!--        <TextView-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+<!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Thursday"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textSize="30sp" />-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
 
-<!--        <ImageView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:contentDescription="@string/todo"-->
-<!--            android:maxWidth="30dp"-->
-<!--            android:maxHeight="30dp"-->
-<!--            android:src="@drawable/weather_icon_43" />-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:text="Thursday"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="30dp" />-->
 
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content">-->
+<!--            <ImageView-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_gravity="top"-->
+<!--                android:contentDescription="@string/todo"-->
+<!--                android:src="@drawable/weather_icon_43" />-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
 
-        <!--        </LinearLayout>-->
-    </LinearLayout>
 
 
 </FrameLayout>
