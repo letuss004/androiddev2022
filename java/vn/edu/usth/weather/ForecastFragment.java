@@ -75,7 +75,7 @@ public class ForecastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FrameLayout view = (FrameLayout) inflater.inflate(R.layout.fragment_forecast, container, false);
+        LinearLayout view = (LinearLayout) inflater.inflate(R.layout.fragment_forecast, container, false);
 
         return view;
     }
