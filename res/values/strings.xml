@@ -3,4 +3,19 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
+    <string name="mon">Mon</string>
+    <string name="partly_cloudy_n24c_31c">PartLy Cloudy\n24C - 31C</string>
+    <string name="tue">Tue</string>
+    <string name="showers_n22c_27c">Showers\n22C - 27C</string>
+    <string name="wed">Wed</string>
+    <string name="rain_n22c_30c">Rain\n22C - 30C</string>
+    <string name="thu">Thu</string>
+    <string name="scattered_showers_n22c_27c">Scattered Showers\n22C - 27C</string>
+    <string name="fri">Fri</string>
+    <string name="mostly_cloudy_n22c_30c">Mostly Cloudy\n22C - 30C</string>
+    <string name="sat">Sat</string>
+    <string name="sun">Sun</string>
+    <string name="thunderstorms_n25c_28c">Thunderstorms\n25C - 28C</string>
+    <string name="scattered_thunderstorms_n27c_27c">Scattered Thunderstorms\n27C - 27C</string>
+    <string name="showers_n24c_26c">Showers\n24C - 26C</string>
 </resources>
