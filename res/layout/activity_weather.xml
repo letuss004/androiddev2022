@@ -7,19 +7,30 @@
     android:orientation="vertical"
     tools:context=".WeatherActivity">
 
-    <fragment
-        android:id="@+id/fragment_tag"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        class="vn.edu.usth.weather.WeatherFragment"
-        android:name="vn.edu.usth.weather.WeatherFragment"
-        />
+        android:background="@color/teal_200"/>
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent" />
 
-        />
+    <!--    <fragment-->
+    <!--        android:id="@+id/fragment_tag"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        class="vn.edu.usth.weather.WeatherFragment"-->
+    <!--        android:name="vn.edu.usth.weather.WeatherFragment"-->
+    <!--        />-->
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/frameLayout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+
+    <!--        />-->
 
 </LinearLayout>
