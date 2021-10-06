@@ -43,11 +43,11 @@ public class ViewpagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "WeatherAndForecastFragment";
+                return "Hanoi, Vietnam";
             case 1:
-                return "ForecastFragment";
+                return "Paris, France";
             case 2:
-                return "WeatherFragment";
+                return "Toulouse, France";
         }
         return "fail";
     }
