@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.USTHWeather">
         <activity
+            android:name=".PrefActivity"
+            android:exported="true" />
+        <activity
             android:name=".WeatherActivity"
             android:exported="true">
             <intent-filter>
@@ -18,8 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

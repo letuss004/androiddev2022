@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -57,9 +60,20 @@ public class WeatherActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // do st if app bar icon is touched
+        switch (item.getItemId()) {
+            case R.id.appbar_refresh:
+                Toast toast = new Toast(this);
+                toast.setText("Refreshing");
+                toast.show();
+
+            case R.id.appbar_settings:
+                Intent intent = new Intent(this, PrefActivity.class);
+                startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -83,7 +97,6 @@ public class WeatherActivity extends AppCompatActivity {
     private void setVietnamese() {
         Locale locale = new Locale("vi");
         Locale.setDefault(locale);
-        System.out.println("----------------------------" + Locale.getDefault());
         Configuration configuration = new Configuration();
         configuration.locale = locale;
         getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
@@ -93,7 +106,7 @@ public class WeatherActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    private void setVietnamese(String lang) {
+    private void setLang(String lang) {
         Locale locale = new Locale(lang);
         Resources resources = getBaseContext().getResources();
         Configuration configuration = new Configuration();
