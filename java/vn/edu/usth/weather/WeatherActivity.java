@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -42,7 +44,24 @@ public class WeatherActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         setVietnamese();
+        setMp3Sound();
 
+    }
+
+    private void setMp3Sound() {
+        Thread thread = new Thread(() -> {
+            MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.bensound_betterdays);
+            mediaPlayer.start();
+
+            try {
+                TimeUnit.MINUTES.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            mediaPlayer.stop();
+        });
+        thread.start();
     }
 
     private void setVietnamese() {
@@ -94,6 +113,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
     }
 
 }
