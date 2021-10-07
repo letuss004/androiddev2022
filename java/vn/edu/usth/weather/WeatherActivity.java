@@ -13,6 +13,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
@@ -46,6 +49,20 @@ public class WeatherActivity extends AppCompatActivity {
 
 //        setMp3Sound();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.usth_appbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // do st if app bar icon is touched
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void setMp3Sound() {
