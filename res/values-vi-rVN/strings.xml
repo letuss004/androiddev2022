@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USTH Weather</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="mon">T2</string>
+    <string name="partly_cloudy_n24c_31c">Mây rải rác\n24C - 31C</string>
+    <string name="tue">T3</string>
+    <string name="showers_n22c_27c">Mưa rải rác\n22C - 27C</string>
+    <string name="wed">T4</string>
+    <string name="rain_n22c_30c">Mưa\n22C - 30C</string>
+    <string name="thu">T5</string>
+    <string name="scattered_showers_n22c_27c">Mưa rào rải rác\n22C - 27C</string>
+    <string name="fri">T6</string>
+    <string name="mostly_cloudy_n22c_30c">Nhiều mây\n22C - 30C</string>
+    <string name="sat">T7</string>
+    <string name="sun">T8</string>
+    <string name="thunderstorms_n25c_28c">Sấm chớp\n25C - 28C</string>
+    <string name="scattered_thunderstorms_n27c_27c">Sấm chớp rải rác\n27C - 27C</string>
+    <string name="showers_n24c_26c">Mưa rải rác\n24C - 26C</string>
+    <string name="hanoi">Hà Nội</string>
+    <string name="_25c">25C</string>
+</resources>

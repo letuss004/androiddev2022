@@ -18,7 +18,6 @@ public class ViewpagerAdapter extends FragmentStatePagerAdapter {
         super(fragmentManager);
     }
 
-
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -26,9 +25,9 @@ public class ViewpagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return WeatherAndForecastFragment.newInstance("0", "0");
             case 1:
-                return ForecastFragment.newInstance("1", "1");
+                return new ForecastFragment();
             case 2:
-                return WeatherFragment.newInstance("2", "2");
+                return new WeatherFragment();
         }
         return new FailFragment();
     }
