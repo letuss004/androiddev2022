@@ -26,6 +26,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        setVietnamese();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
@@ -43,8 +44,7 @@ public class WeatherActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
-        setVietnamese();
-        setMp3Sound();
+//        setMp3Sound();
 
     }
 
@@ -67,6 +67,7 @@ public class WeatherActivity extends AppCompatActivity {
     private void setVietnamese() {
         Locale locale = new Locale("vi");
         Locale.setDefault(locale);
+        System.out.println("----------------------------" + Locale.getDefault());
         Configuration configuration = new Configuration();
         configuration.locale = locale;
         getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());

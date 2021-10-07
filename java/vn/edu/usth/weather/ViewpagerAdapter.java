@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import java.util.Locale;
+
 public class ViewpagerAdapter extends FragmentStatePagerAdapter {
     private static final int PAGE_COUNT = 3;
 
@@ -40,13 +42,25 @@ public class ViewpagerAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "Hanoi, Vietnam";
-            case 1:
-                return "Paris, France";
-            case 2:
-                return "Toulouse, France";
+        Locale locale = Locale.getDefault();
+        if (locale.toString().equals("vi")) {
+            switch (position) {
+                case 0:
+                    return "Hà Nội, Việt Nam";
+                case 1:
+                    return "Paris, Pháp";
+                case 2:
+                    return "Toulouse, Pháp";
+            }
+        } else {
+            switch (position) {
+                case 0:
+                    return "Hanoi, Vietnam";
+                case 1:
+                    return "Paris, France";
+                case 2:
+                    return "Toulouse, France";
+            }
         }
         return "fail";
     }
