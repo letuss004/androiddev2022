@@ -41,19 +41,19 @@ public class WeatherActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
-        setVietnamese("vi");
+        setVietnamese();
 
     }
 
     private void setVietnamese() {
-        Locale locale = new Locale("vn");
+        Locale locale = new Locale("vi");
         Locale.setDefault(locale);
         Configuration configuration = new Configuration();
         configuration.locale = locale;
         getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
 
         SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("My Lang", "vn");
+        editor.putString("My Lang", "vi");
         editor.apply();
     }
 
