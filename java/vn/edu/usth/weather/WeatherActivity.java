@@ -48,7 +48,6 @@ public class WeatherActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 //        setMp3Sound();
-
     }
 
     @Override
