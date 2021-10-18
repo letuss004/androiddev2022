@@ -5,27 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".WeatherActivity">
+    tools:context=".view.WeatherActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/teal_200"
-        />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <!--    <fragment-->
     <!--        android:id="@+id/fragment_tag"-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="wrap_content"-->
-    <!--        class="vn.edu.usth.weather.WeatherFragment"-->
-    <!--        android:name="vn.edu.usth.weather.WeatherFragment"-->
+    <!--        class="vn.edu.usth.weather.view.WeatherFragment"-->
+    <!--        android:name="vn.edu.usth.weather.view.WeatherFragment"-->
     <!--        />-->
 
     <!--    <FrameLayout-->

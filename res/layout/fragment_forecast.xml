@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#DFDFFF"
     android:orientation="vertical"
-    tools:context=".ForecastFragment">
+    tools:context=".view.ForecastFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

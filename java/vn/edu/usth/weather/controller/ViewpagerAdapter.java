@@ -1,17 +1,17 @@
-package vn.edu.usth.weather;
-
-import android.util.Log;
-import android.widget.Switch;
+package vn.edu.usth.weather.controller;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.lifecycle.Lifecycle;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.Locale;
+
+import vn.edu.usth.weather.view.FailFragment;
+import vn.edu.usth.weather.view.ForecastFragment;
+import vn.edu.usth.weather.view.WeatherAndForecastFragment;
+import vn.edu.usth.weather.view.WeatherFragment;
 
 public class ViewpagerAdapter extends FragmentStatePagerAdapter {
     private static final int PAGE_COUNT = 3;

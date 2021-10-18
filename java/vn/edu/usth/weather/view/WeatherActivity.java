@@ -1,4 +1,4 @@
-package vn.edu.usth.weather;
+package vn.edu.usth.weather.view;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +14,6 @@ import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,10 +22,11 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+
+import vn.edu.usth.weather.R;
+import vn.edu.usth.weather.controller.ViewpagerAdapter;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -35,13 +35,6 @@ public class WeatherActivity extends AppCompatActivity {
 //        setVietnamese();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-
-//        ForecastFragment forecastFragment = new ForecastFragment();
-//        WeatherFragment weatherFragment = new WeatherFragment();
-
-        //TODO: WHY I CAN'T DO IT PROGRAMMATICALLY
-//        getSupportFragmentManager().beginTransaction().add(R.id.fragment_tag, weatherFragment).commit();
-//        getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, forecastFragment).commit();
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager());

@@ -1,8 +1,10 @@
-package vn.edu.usth.weather;
+package vn.edu.usth.weather.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import vn.edu.usth.weather.R;
 
 public class PrefActivity extends AppCompatActivity {
 

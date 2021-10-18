@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".WeatherAndForecastFragment">
+    tools:context=".view.WeatherAndForecastFragment">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_weather"
-        android:name="vn.edu.usth.weather.WeatherFragment"
+        android:name="vn.edu.usth.weather.view.WeatherFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_forecast"
-        android:name="vn.edu.usth.weather.ForecastFragment"
+        android:name="vn.edu.usth.weather.view.ForecastFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

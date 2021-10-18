@@ -1,16 +1,14 @@
-package vn.edu.usth.weather;
+package vn.edu.usth.weather.view;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+
+import vn.edu.usth.weather.R;
 
 /**
  * A simple {@link Fragment} subclass.
