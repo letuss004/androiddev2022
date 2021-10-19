@@ -13,6 +13,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +25,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 import vn.edu.usth.weather.R;
 import vn.edu.usth.weather.controller.ViewpagerAdapter;
@@ -53,22 +55,60 @@ public class WeatherActivity extends AppCompatActivity {
         return true;
     }
 
+    public interface ToastCallBack {
+        void callBack(String json);
+    }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // do st if app bar icon is touched
-        switch (item.getItemId()) {
+        int id = item.getItemId();
+
+        switch (id) {
+
             case R.id.appbar_refresh:
-                Toast toast = new Toast(this);
-                toast.setText("Refreshing");
-                toast.show();
+                networkSimulate(json -> Toast.makeText(WeatherActivity.this, json, Toast.LENGTH_SHORT).show());
+//                Toast toast = new Toast(this);
+//                Thread thread = new Thread(() -> {
+//                    try {
+//                        Thread.sleep(3000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    String json = "Some simulate api will be here but i lazy";
+//                    toast.setText(json);
+//                    toast.show();
+//
+//                });
+//                thread.start();
+
+                break;
 
             case R.id.appbar_settings:
                 Intent intent = new Intent(this, PrefActivity.class);
                 startActivity(intent);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void networkSimulate(ToastCallBack toastCallBack) {
+        AtomicReference<String> json = new AtomicReference<>("");
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Looper.prepare();
+            json.set("Some simulate api will be here but i lazy");
+            toastCallBack.callBack(json.get());
+        });
+        thread.start();
+
     }
 
     private void setMp3Sound() {
