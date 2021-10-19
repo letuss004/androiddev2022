@@ -13,7 +13,9 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +33,14 @@ import vn.edu.usth.weather.R;
 import vn.edu.usth.weather.controller.ViewpagerAdapter;
 
 public class WeatherActivity extends AppCompatActivity {
+    private final Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            String content = msg.getData().getString("simulate");
+            Toast.makeText(WeatherActivity.this, content, Toast.LENGTH_SHORT).show();
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +78,8 @@ public class WeatherActivity extends AppCompatActivity {
         switch (id) {
 
             case R.id.appbar_refresh:
-                networkSimulate(json -> Toast.makeText(WeatherActivity.this, json, Toast.LENGTH_SHORT).show());
+//                networkSimulate(json -> Toast.makeText(WeatherActivity.this, json, Toast.LENGTH_SHORT).show());
+                ToastHandler();
 //                Toast toast = new Toast(this);
 //                Thread thread = new Thread(() -> {
 //                    try {
@@ -94,7 +105,32 @@ public class WeatherActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void ToastHandler() {
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
+            Bundle bundle = new Bundle();
+            bundle.putString("simulate", "weather: [" +
+                    " {" +
+                    "   id: 800," +
+                    "   main: Clear," +
+                    "   description: clear sky," +
+                    "   icon: 01d" +
+                    " }" +
+                    "  ]");
+
+            Message msg = new Message();
+            msg.setData(bundle);
+            handler.sendMessage(msg);
+        });
+        thread.start();
+    }
+
+    @Deprecated
     private void networkSimulate(ToastCallBack toastCallBack) {
         AtomicReference<String> json = new AtomicReference<>("");
         Thread thread = new Thread(() -> {
