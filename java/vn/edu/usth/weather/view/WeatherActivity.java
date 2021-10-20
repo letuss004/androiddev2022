@@ -163,6 +163,7 @@ public class WeatherActivity extends AppCompatActivity {
                     connection.setDoInput(true);
                     // allow reading response code and response data connection.
                     connection.connect();
+                    System.out.println("after connect");
                     // Receive response
                     int response = connection.getResponseCode();
                     Log.i("USTHWeather", "The response is: " + response);
