@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -34,6 +35,7 @@ import vn.edu.usth.weather.controller.ViewpagerAdapter;
 
 public class WeatherActivity extends AppCompatActivity {
     private final Handler handler = new Handler(Looper.getMainLooper()) {
+
         @Override
         public void handleMessage(@NonNull Message msg) {
             String content = msg.getData().getString("simulate");
@@ -78,8 +80,10 @@ public class WeatherActivity extends AppCompatActivity {
         switch (id) {
 
             case R.id.appbar_refresh:
+//                System.out.println("clickkkkkkkkkkkkkkkkkkkkkk");
 //                networkSimulate(json -> Toast.makeText(WeatherActivity.this, json, Toast.LENGTH_SHORT).show());
-                ToastHandler();
+//                ToastHandler();
+
 //                Toast toast = new Toast(this);
 //                Thread thread = new Thread(() -> {
 //                    try {
@@ -93,7 +97,7 @@ public class WeatherActivity extends AppCompatActivity {
 //
 //                });
 //                thread.start();
-
+                backgroundThreadUpgrade();
                 break;
 
             case R.id.appbar_settings:
@@ -103,6 +107,43 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private void backgroundThreadUpgrade() {
+        System.out.println("clicked");
+        AsyncTask<String, String, String> asyncTask = new AsyncTask<String, String, String>() {
+            @Override
+            protected String doInBackground(String... strings) {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onProgressUpdate(String... values) {
+
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                String json = "simulate weather: [" +
+                        " {" +
+                        "   id: 800," +
+                        "   main: Clear," +
+                        "   description: clear sky," +
+                        "   icon: 01d" +
+                        " }" +
+                        "  ]";
+                System.out.println("OnProgress ");
+                Toast.makeText(getBaseContext(), json, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        asyncTask.execute();
     }
 
     private void ToastHandler() {
