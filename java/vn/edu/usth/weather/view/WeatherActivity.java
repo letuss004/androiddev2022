@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,14 +20,21 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
@@ -81,8 +90,8 @@ public class WeatherActivity extends AppCompatActivity {
 
             case R.id.appbar_refresh:
 //                System.out.println("clickkkkkkkkkkkkkkkkkkkkkk");
-//                networkSimulate(json -> Toast.makeText(WeatherActivity.this, json, Toast.LENGTH_SHORT).show());
-//                ToastHandler();
+//                networkSimulate(json -> Toast.makeText(WeatherActivity.this, json, Toast.LENGTH_SHORT).show()); // pw13
+//                ToastHandler(); // pw13
 
 //                Toast toast = new Toast(this);
 //                Thread thread = new Thread(() -> {
@@ -97,7 +106,8 @@ public class WeatherActivity extends AppCompatActivity {
 //
 //                });
 //                thread.start();
-                backgroundThreadUpgrade();
+//                backgroundThreadUpgrade(); // PW14
+                asyncTaskNetwork();
                 break;
 
             case R.id.appbar_settings:
@@ -107,6 +117,71 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @SuppressLint("StaticFieldLeak")
+    private void asyncTaskNetwork() {
+
+        AsyncTask<String, Integer, Bitmap> asyncTask = new AsyncTask<String, Integer, Bitmap>() {
+            private Bitmap bitmap;
+            private URL url;
+            private HttpURLConnection connection;
+
+            @Override
+            protected void onPreExecute() {
+                try {
+                    url = new URL("https://www.usth.edu.vn/uploads/logo_moi-eng.png");
+                    System.out.println("URL ready");
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                ImageView logo = (ImageView) findViewById(R.id.logo);
+                logo.setImageBitmap(bitmap);
+                System.out.println("Post posted");
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... response) {
+                super.onProgressUpdate(response);
+            }
+
+            InputStream is;
+
+            @Override
+            protected Bitmap doInBackground(String... strings) {
+
+                try {
+                    System.out.println("start try catch");
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setDoInput(true);
+                    // allow reading response code and response data connection.
+                    connection.connect();
+                    // Receive response
+                    int response = connection.getResponseCode();
+                    Log.i("USTHWeather", "The response is: " + response);
+                    // Process image response
+                    is = connection.getInputStream();
+                    System.out.println("end try catch");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                bitmap = BitmapFactory.decodeStream(is);
+
+                connection.disconnect();
+                System.out.println("Disconnected");
+                return bitmap;
+            }
+        };
+        asyncTask.execute();
     }
 
     @SuppressLint("StaticFieldLeak")
