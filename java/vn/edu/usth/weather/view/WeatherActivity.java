@@ -28,6 +28,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
@@ -107,7 +111,8 @@ public class WeatherActivity extends AppCompatActivity {
 //                });
 //                thread.start();
 //                backgroundThreadUpgrade(); // PW14
-                asyncTaskNetwork();
+//                asyncTaskNetwork(); // Pw15
+                asyncTaskVolley();
                 break;
 
             case R.id.appbar_settings:
@@ -117,6 +122,43 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private void asyncTaskVolley() {
+
+        AsyncTask<String, String, Bitmap> asyncTask = new AsyncTask<String, String, Bitmap>() {
+            @Override
+            protected Bitmap doInBackground(String... strings) {
+                RequestQueue queue = Volley.newRequestQueue(getBaseContext());
+                Response.Listener<Bitmap> listener = response -> {
+                    ImageView iv = (ImageView) findViewById(R.id.logo);
+                    iv.setImageBitmap(response);
+                };
+                ImageRequest imageRequest = new ImageRequest("https://www.usth.edu.vn/uploads/logo_moi-eng.png",
+                        listener, 0, 0, ImageView.ScaleType.CENTER,
+                        Bitmap.Config.ARGB_8888, null);
+                queue.add(imageRequest);
+                return null;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                super.onPostExecute(bitmap);
+            }
+
+            @Override
+            protected void onProgressUpdate(String... values) {
+                super.onProgressUpdate(values);
+            }
+        };
+
+        asyncTask.execute();
     }
 
 
